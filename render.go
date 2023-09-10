@@ -5,6 +5,7 @@
 package markdown
 
 import (
+	"fmt"
 	"io"
 	"regexp"
 	"strconv"
@@ -154,10 +155,21 @@ func (r *Renderer) renderToken(tokens []Token, idx int, options RenderOptions) {
 		r.w.WriteByte('"')
 
 		if tok.Title != "" {
-			r.w.WriteString(` title="`)
-			html.WriteEscapedString(r.w, tok.Title)
-			r.w.WriteByte('"')
+			w, h := parseImageSize(tok.Title)
+			if w == 0 && h == 0 {
+				r.w.WriteString(` title="`)
+				html.WriteEscapedString(r.w, tok.Title)
+				r.w.WriteByte('"')
+			} else {
+				if w > 0 {
+					r.w.WriteString(fmt.Sprintf(" width=\"%d\"", w))
+				}
+				if h > 0 {
+					r.w.WriteString(fmt.Sprintf(" height=\"%d\"", h))
+				}
+			}
 		}
+
 		if options.XHTML {
 			r.w.WriteString(" />")
 		} else {
