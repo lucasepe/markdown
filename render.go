@@ -150,9 +150,11 @@ func (r *Renderer) renderToken(tokens []Token, idx int, options RenderOptions) {
 	case *Image:
 		r.w.WriteString(`<img src="`)
 		html.WriteEscapedString(r.w, tok.Src)
-		r.w.WriteString(`" alt="`)
-		r.renderInlineAsText(tok.Tokens)
-		r.w.WriteByte('"')
+		if len(tok.Tokens) > 0 {
+			r.w.WriteString(`" alt="`)
+			r.renderInlineAsText(tok.Tokens)
+			r.w.WriteByte('"')
+		}
 
 		if tok.Title != "" {
 			w, h := parseImageSize(tok.Title)

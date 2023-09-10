@@ -26,6 +26,6 @@ func TestImageSize(t *testing.T) {
 	w, h := parseImageSize(tok.Title)
 	fmt.Printf("w: %d, h: %d\n", w, h)
 
-	//got := render.RenderToString([]byte(data))
-	//fmt.Println(got)
+	got := render.RenderToString([]byte(data))
+	fmt.Println(got)
 }
