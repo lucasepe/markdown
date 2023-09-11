@@ -171,6 +171,7 @@ func (r *Renderer) renderToken(tokens []Token, idx int, options RenderOptions) {
 				}
 			}
 		}
+		r.w.WriteByte('"')
 
 		if options.XHTML {
 			r.w.WriteString(" />")
