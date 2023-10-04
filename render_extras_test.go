@@ -7,7 +7,7 @@ import (
 
 func TestImageSize(t *testing.T) {
 	//data := `![foo bar](/path/to/image.jpg "=200x300" )`
-	data := `![](./images/informer.png){ height=280 }`
+	data := `![](./images/informer.png " =280x100")`
 
 	render := New(
 		HTML(false),

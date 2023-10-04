@@ -6,6 +6,7 @@ import (
 )
 
 func parseImageSize(txt string) (w int, h int) {
+	txt = strings.TrimSpace(txt)
 	if strings.IndexByte(txt, '=') != 0 {
 		return
 	}

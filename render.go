@@ -164,10 +164,10 @@ func (r *Renderer) renderToken(tokens []Token, idx int, options RenderOptions) {
 				r.w.WriteByte('"')
 			} else {
 				if w > 0 {
-					r.w.WriteString(fmt.Sprintf(" width=\"%d\"", w))
+					r.w.WriteString(fmt.Sprintf(" width=\"%d", w))
 				}
 				if h > 0 {
-					r.w.WriteString(fmt.Sprintf(" height=\"%d\"", h))
+					r.w.WriteString(fmt.Sprintf(" height=\"%d", h))
 				}
 			}
 		}
