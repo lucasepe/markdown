@@ -159,15 +159,15 @@ func (r *Renderer) renderToken(tokens []Token, idx int, options RenderOptions) {
 		if tok.Title != "" {
 			w, h := parseImageSize(tok.Title)
 			if w == 0 && h == 0 {
-				r.w.WriteString(` title="`)
+				r.w.WriteString(`" title="`)
 				html.WriteEscapedString(r.w, tok.Title)
 				r.w.WriteByte('"')
 			} else {
 				if w > 0 {
-					r.w.WriteString(fmt.Sprintf(" width=\"%d", w))
+					r.w.WriteString(fmt.Sprintf("\" width=\"%d", w))
 				}
 				if h > 0 {
-					r.w.WriteString(fmt.Sprintf(" height=\"%d", h))
+					r.w.WriteString(fmt.Sprintf("\" height=\"%d", h))
 				}
 			}
 		}
